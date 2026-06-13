@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>בית כפרי למכירה · רחוב יחזקאל, רמות רמז · חיפה</title>
+<meta name="description" content="בית דו־קומתי מרווח בסגנון כפרי, כ־140 מ\"ר, 5.5 חדרים עם גינה רחבה ומטופחת ברחוב יחזקאל, שכונת רמות רמז, חיפה. למכירה ללא תיווך." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Assistant:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ivory:#f6f1e7;
+  --paper:#fffdf8;
+  --ink:#221d17;
+  --soft:#6f6557;
+  --line:#e3d9c8;
+  --bronze:#a9783f;
+  --bronze-deep:#8a5f2d;
+  --olive:#5d6347;
+  --dark:#1a1611;
+  --shadow:0 24px 60px -28px rgba(43,33,18,.45);
+  --r:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Assistant",system-ui,sans-serif;
+  background:var(--ivory);
+  color:var(--ink);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,.serif{font-family:"Frank Ruhl Libre",Georgia,serif;font-weight:700;letter-spacing:-.01em}
+img{display:block;max-width:100%}
+a{color:inherit}
+
+/* subtle paper grain */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+.wrap{max-width:1180px;margin:auto;padding:0 24px}
+
+/* ====== floating call button ====== */
+.float-call{
+  position:fixed;left:22px;bottom:22px;z-index:60;
+  display:flex;align-items:center;gap:.6rem;
+  background:var(--bronze);color:#fff;text-decoration:none;
+  padding:.85rem 1.25rem;border-radius:999px;font-weight:700;
+  box-shadow:0 16px 34px -12px rgba(169,120,63,.7);
+  transform:translateY(120px);transition:transform .5s cubic-bezier(.2,.8,.2,1),background .3s;
+}
+.float-call.show{transform:translateY(0)}
+.float-call:hover{background:var(--bronze-deep)}
+.float-call svg{width:18px;height:18px}
+
+/* ====== HERO ====== */
+header.hero{
+  position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  color:#fff;overflow:hidden;isolation:isolate;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:-2;
+  background:url("images/c0ade851-c0d4-45f4-b395-362f18709cee.JPG") center 35%/cover no-repeat;
+  transform:scale(1.12);animation:heroZoom 16s ease-out forwards;
+}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(to top,rgba(17,13,8,.86) 0%,rgba(17,13,8,.34) 42%,rgba(17,13,8,.12) 100%);
+}
+.hero-inner{padding-bottom:7vh;padding-top:14vh}
+.tag{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid rgba(255,255,255,.5);border-radius:999px;
+  padding:.45rem 1.1rem;font-size:.82rem;letter-spacing:.06em;
+  backdrop-filter:blur(6px);background:rgba(255,255,255,.08);
+  text-transform:uppercase;
+}
+.tag b{color:#f0d9b8;font-weight:700}
+.hero h1{
+  font-size:clamp(2.5rem,7vw,5.6rem);line-height:1.02;margin:1.1rem 0 .6rem;
+  font-weight:900;text-shadow:0 2px 30px rgba(0,0,0,.35);max-width:14ch;
+}
+.hero .lead{font-size:clamp(1.05rem,2.1vw,1.5rem);max-width:60ch;color:#f3ece0;font-weight:300}
+.hero .loc{margin-top:.4rem;font-size:1rem;color:#e7d8c1;display:flex;align-items:center;gap:.5rem}
+.cta-row{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.8rem}
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;text-decoration:none;font-weight:700;
+  padding:.95rem 1.5rem;border-radius:14px;transition:transform .25s,box-shadow .3s,background .3s;
+}
+.btn-primary{background:var(--bronze);color:#fff;box-shadow:0 14px 30px -12px rgba(169,120,63,.8)}
+.btn-primary:hover{transform:translateY(-3px);background:var(--bronze-deep)}
+.btn-ghost{border:1px solid rgba(255,255,255,.6);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-3px)}
+.scroll-cue{
+  position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:2;
+  color:#fff;opacity:.8;font-size:.75rem;letter-spacing:.2em;text-align:center;
+  animation:bob 2.2s ease-in-out infinite;
+}
+.scroll-cue span{display:block;width:1px;height:34px;background:#fff;margin:.4rem auto 0;opacity:.6}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+/* hero entrance */
+.reveal-up{opacity:0;transform:translateY(26px);animation:up .9s cubic-bezier(.2,.8,.2,1) forwards}
+.d1{animation-delay:.25s}.d2{animation-delay:.45s}.d3{animation-delay:.65s}.d4{animation-delay:.85s}.d5{animation-delay:1.05s}
+@keyframes up{to{opacity:1;transform:none}}
+
+/* ====== STATS ====== */
+.stats-sec{background:var(--paper);border-bottom:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;padding:0}
+.stat{padding:2.6rem 1rem;text-align:center;border-left:1px solid var(--line)}
+.stat:first-child{border-left:none}
+.stat b{font-family:"Frank Ruhl Libre",serif;display:block;font-size:2.6rem;line-height:1;color:var(--bronze);font-weight:900}
+.stat span{display:block;margin-top:.5rem;color:var(--soft);font-size:.98rem;letter-spacing:.02em}
+
+/* section scaffolding */
+.section{padding:clamp(4rem,9vw,7.5rem) 0}
+.eyebrow{color:var(--bronze);font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:.8rem;margin:0 0 .6rem}
+.section h2{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.08;margin:0 0 1.1rem}
+.section p.body{font-size:1.1rem;color:var(--soft);max-width:62ch}
+
+/* split */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,4rem);align-items:center}
+.split.flip{direction:ltr}
+.split.flip>*{direction:rtl}
+.split .media{position:relative;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+.split .media img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.split .media:hover img{transform:scale(1.05)}
+.split .media::after{content:"";position:absolute;inset:0;border:1px solid rgba(255,255,255,.18);border-radius:var(--r);pointer-events:none}
+
+/* advantages */
+.adv{background:var(--dark);color:#f4ece0}
+.adv .eyebrow{color:#d8ab74}
+.adv h2{color:#fff}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.6rem}
+.card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  padding:1.7rem 1.4rem;border-radius:18px;transition:transform .4s,background .4s,border-color .4s;
+}
+.card:hover{transform:translateY(-8px);background:rgba(216,171,116,.12);border-color:rgba(216,171,116,.4)}
+.card .ic{width:42px;height:42px;color:#d8ab74;margin-bottom:1rem}
+.card h3{font-size:1.3rem;margin:0 0 .5rem;color:#fff;font-weight:700}
+.card p{margin:0;color:#bcae9a;font-size:.97rem}
+
+/* ====== CAROUSEL ====== */
+.gallery-sec{background:var(--ivory)}
+.carousel{position:relative;margin-top:2.5rem;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);background:#000}
+.slides{position:relative;aspect-ratio:16/10;width:100%}
+@media(min-width:700px){.slides{aspect-ratio:16/9}}
+.slide{
+  position:absolute;inset:0;opacity:0;transform:scale(1.04);
+  transition:opacity .9s ease,transform 1.2s ease;pointer-events:none;
+}
+.slide.active{opacity:1;transform:scale(1);pointer-events:auto}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide .cap{
+  position:absolute;right:0;bottom:0;left:0;
+  padding:2.4rem 1.6rem 1.3rem;
+  background:linear-gradient(to top,rgba(0,0,0,.72),transparent);
+  color:#fff;font-family:"Frank Ruhl Libre",serif;font-size:clamp(1.1rem,2.4vw,1.7rem);font-weight:500;
+}
+.nav-btn{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:5;
+  width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,253,248,.9);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 22px rgba(0,0,0,.28);transition:transform .25s,background .25s;
+}
+.nav-btn:hover{background:#fff;transform:translateY(-50%) scale(1.08)}
+.nav-btn svg{width:22px;height:22px}
+.nav-prev{right:16px}.nav-next{left:16px}
+.counter{
+  position:absolute;top:16px;right:16px;z-index:5;
+  background:rgba(0,0,0,.5);color:#fff;backdrop-filter:blur(4px);
+  padding:.35rem .85rem;border-radius:999px;font-size:.85rem;font-weight:600;letter-spacing:.05em;
+}
+.dots{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-top:1.3rem}
+.dot{width:9px;height:9px;border-radius:50%;border:none;cursor:pointer;background:var(--line);transition:transform .25s,background .25s;padding:0}
+.dot.active{background:var(--bronze);transform:scale(1.5)}
+
+/* location */
+.loc-sec{background:var(--paper)}
+.loc-list{list-style:none;padding:0;margin:1.5rem 0 0;display:grid;gap:.2rem}
+.loc-list li{
+  display:flex;align-items:flex-start;gap:.8rem;padding:.9rem 0;border-bottom:1px solid var(--line);
+  font-size:1.08rem;
+}
+.loc-list li:last-child{border-bottom:none}
+.loc-list .pin{flex:none;width:24px;height:24px;color:var(--bronze);margin-top:.2rem}
+
+/* contact */
+.contact-sec{background:var(--dark);color:#fff;text-align:center}
+.contact-sec .eyebrow{color:#d8ab74}
+.contact-sec h2{color:#fff;font-size:clamp(2rem,5vw,3.4rem)}
+.contact-sec p{color:#c9bca8;font-size:1.1rem;max-width:48ch;margin-inline:auto}
+.contact-card{
+  margin:2.5rem auto 0;max-width:520px;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:2.4rem 2rem;
+}
+.agent{font-family:"Frank Ruhl Libre",serif;font-size:1.5rem;font-weight:700;margin-bottom:.2rem}
+.agent small{display:block;color:#bcae9a;font-family:"Assistant";font-size:.95rem;font-weight:400;margin-top:.2rem}
+.phone-btn{
+  display:inline-flex;align-items:center;gap:.6rem;margin-top:1.5rem;
+  background:var(--bronze);color:#fff;text-decoration:none;font-size:1.35rem;font-weight:700;
+  padding:1rem 2rem;border-radius:16px;transition:transform .25s,background .3s;direction:ltr;
+}
+.phone-btn:hover{transform:translateY(-3px);background:var(--bronze-deep)}
+.no-broker{display:inline-block;margin-top:1.4rem;color:#d8ab74;letter-spacing:.05em;font-weight:600;font-size:.9rem}
+
+footer{background:var(--dark);color:#8a7f6d;text-align:center;padding:2.2rem 1rem;border-top:1px solid rgba(255,255,255,.07);font-size:.9rem}
+
+/* scroll-reveal */
+.fade{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.fade.in{opacity:1;transform:none}
+.fade.s1{transition-delay:.12s}.fade.s2{transition-delay:.24s}.fade.s3{transition-delay:.36s}.fade.s4{transition-delay:.48s}
+
+@media(max-width:880px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3){border-left:none}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .split{grid-template-columns:1fr}
+  .cards{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  .cards{grid-template-columns:1fr}
+  .nav-btn{width:44px;height:44px}
+  .float-call span{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms!important;animation-delay:0ms!important;transition-duration:.001ms!important}
+  .hero-bg{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- floating call -->
+<a class="float-call" id="floatCall" href="tel:+972526002916">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  <span>חייגו אלירן</span>
+</a>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <span class="tag reveal-up d1">למכירה ללא תיווך · <b>רחוב יחזקאל, רמות רמז</b></span>
+    <h1 class="reveal-up d2">בית כפרי משפחתי עם גינה רחבה ומטופחת</h1>
+    <p class="lead reveal-up d3">בית דו־קומתי מרווח כ־140 מ"ר, 5.5 חדרים מוארים ונעימים, יחידת הורים מפנקת וחצר פרטית ירוקה — בלב שכונה שקטה ומשפחתית בחיפה.</p>
+    <p class="loc reveal-up d4">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      רחוב יחזקאל · שכונת רמות רמז · חיפה
+    </p>
+    <div class="cta-row reveal-up d5">
+      <a class="btn btn-primary" href="#contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        לתיאום ביקור ופרטים
+      </a>
+      <a class="btn btn-ghost" href="#gallery">לצפייה בגלריה</a>
+    </div>
+  </div>
+  <div class="scroll-cue">גלילה<span></span></div>
+</header>
+
+<!-- ============ STATS ============ -->
+<section class="stats-sec">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat fade"><b>5.5</b><span>חדרים מוארים</span></div>
+      <div class="stat fade s1"><b>~140</b><span>מ"ר בנוי</span></div>
+      <div class="stat fade s2"><b>2</b><span>קומות · כניסה פרטית</span></div>
+      <div class="stat fade s3"><b>גינה</b><span>רחבה ומטופחת</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHARACTER ============ -->
+<section class="section">
+  <div class="wrap split">
+    <div class="fade">
+      <p class="eyebrow">הבית</p>
+      <h2>בית עם אופי, אור ותחושת מרחב</h2>
+      <p class="body">בית משפחתי בסגנון כפרי וחם — שילוב של עץ, גוונים בהירים, חלונות גדולים וחללי אירוח פתוחים שמציפים את הבית באור טבעי. מטבח כפרי מעוצב, פינת אוכל פתוחה לגינה וסלון מרווח שיוצרים בית נעים ומזמין למשפחה שמחפשת איכות חיים, פרטיות ומרחב.</p>
+    </div>
+    <div class="media fade s2">
+      <img src="images/9F9E930A-266E-457C-96BF-2DF58FF42273.PNG" alt="מטבח כפרי לבן מעוצב" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap split flip">
+    <div class="media fade">
+      <img src="images/BE2B702B-B4BF-4E10-89A4-989A5579063E.PNG" alt="סלון מרווח ומואר" loading="lazy">
+    </div>
+    <div class="fade s2">
+      <p class="eyebrow">חללי המגורים</p>
+      <h2>סלון פתוח, חם ומלא אור</h2>
+      <p class="body">חלל מגורים רציף שמחבר בין סלון, פינת אוכל ומטבח — אידיאלי לאירוח ולחיי משפחה. יחידת הורים מפנקת, מחסן וחלל עבודה נוסף משלימים בית מתוכנן היטב, עם פתרון מושלם לכל בן משפחה.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ADVANTAGES ============ -->
+<section class="section adv">
+  <div class="wrap">
+    <p class="eyebrow fade">למה כאן</p>
+    <h2 class="fade s1">יתרונות מרכזיים</h2>
+    <div class="cards">
+      <div class="card fade s1">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v8m0 0c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"/><path d="M12 22v-2"/></svg>
+        <h3>גינה רחבה</h3>
+        <p>חצר פרטית מטופחת עם צמחייה, עצים ופינות אירוח נעימות.</p>
+      </div>
+      <div class="card fade s2">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg>
+        <h3>מטבח כפרי</h3>
+        <p>מטבח לבן מעוצב, מואר ושימושי עם משטחי עבודה רחבים.</p>
+      </div>
+      <div class="card fade s3">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <h3>מיקום איכותי</h3>
+        <p>קרבה לבתי ספר, גנים, הטכניון, אוניברסיטת חיפה וצירי תנועה מרכזיים.</p>
+      </div>
+      <div class="card fade s4">
+        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <h3>סביבה ירוקה</h3>
+        <p>שכונה שקטה, משפחתית ועטופה בצמחייה — איכות חיים אמיתית.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY / CAROUSEL ============ -->
+<section class="section gallery-sec" id="gallery">
+  <div class="wrap">
+    <p class="eyebrow fade">סיור בבית</p>
+    <h2 class="fade s1">גלריית תמונות</h2>
+    <div class="carousel fade s1" id="carousel">
+      <div class="counter"><span id="cur">1</span> / <span id="total">15</span></div>
+      <div class="slides" id="slides"><!-- slides injected by JS --></div>
+      <button class="nav-btn nav-prev" id="prev" aria-label="הקודם">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <button class="nav-btn nav-next" id="next" aria-label="הבא">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- ============ LOCATION ============ -->
+<section class="section loc-sec">
+  <div class="wrap split">
+    <div class="fade">
+      <p class="eyebrow">מיקום</p>
+      <h2>רחוב יחזקאל, שכונת רמות רמז</h2>
+      <p class="body">מיקום מצוין בשכונה ירוקה ושקטה בחיפה — הכל בהישג יד, עם נגישות נוחה למוסדות חינוך, אקדמיה וצירי תנועה מרכזיים.</p>
+      <ul class="loc-list">
+        <li><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>בסמיכות לבתי ספר וגני ילדים</li>
+        <li><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>מרחק קצר מהטכניון</li>
+        <li><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>גישה נוחה לאוניברסיטת חיפה</li>
+        <li><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>קרבה לצירי תנועה מרכזיים</li>
+        <li><svg class="pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>סביבה ירוקה, שקטה ומשפחתית</li>
+      </ul>
+    </div>
+    <div class="media fade s2">
+      <img src="images/ccbcd7c4-c2ec-4e2d-936d-93a31b63d0a8.JPG" alt="חצר אחורית עם דק וצמחייה" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact-sec" id="contact">
+  <div class="wrap">
+    <p class="eyebrow fade">צרו קשר</p>
+    <h2 class="fade s1">רוצים לקבל פרטים נוספים?</h2>
+    <p class="fade s1">לפרטים, תמונות נוספות ותיאום ביקור בנכס — מוזמנים לחייג.</p>
+    <div class="contact-card fade s2">
+      <div class="agent">אלירן<small>בעל הנכס · ללא תיווך</small></div>
+      <a class="phone-btn" href="tel:+972526002916">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        052-6002916
+      </a>
+      <span class="no-broker">✦ למכירה ללא תיווך ✦</span>
+    </div>
+  </div>
+</section>
+
+<footer>בית כפרי למכירה · רחוב יחזקאל, שכונת רמות רמז, חיפה</footer>
+
+<script>
+/* ===== image set (text/captions only — own photos) ===== */
+const IMAGES = [
+  {src:"images/c0ade851-c0d4-45f4-b395-362f18709cee.JPG", cap:"חזית הבית והגינה"},
+  {src:"images/ccbcd7c4-c2ec-4e2d-936d-93a31b63d0a8.JPG", cap:"חצר אחורית עם דק וצמחייה"},
+  {src:"images/BE2B702B-B4BF-4E10-89A4-989A5579063E.PNG", cap:"סלון מרווח ומואר"},
+  {src:"images/9FB7FD54-85B9-4DFB-A361-F2A1BED78164.PNG", cap:"חלל מגורים פתוח עם מדרגות"},
+  {src:"images/2ba955ef-34d1-47ec-84c7-7ccd21b91e83.JPG", cap:"פינת אוכל עם מבט לגינה"},
+  {src:"images/9F9E930A-266E-457C-96BF-2DF58FF42273.PNG", cap:"מטבח כפרי לבן מעוצב"},
+  {src:"images/9e9e0600-ec88-4192-8807-dc4ec36dd219.JPG", cap:"חדר הורים"},
+  {src:"images/14099C94-111B-4A52-8F05-B5730E35216C.PNG", cap:"חדר רחצה הורים"},
+  {src:"images/83A62E86-F993-46E4-9669-2BDB713EDCE1.PNG", cap:"חדר אמבטיה משפחתי"},
+  {src:"images/1c2d7e39-526b-4da8-ba2b-6c25596764aa.JPG", cap:"חדר ילדים"},
+  {src:"images/5a04f24a-04f3-418c-81ce-3be7d3d06937.JPG", cap:"חדר ילדים נוסף"},
+  {src:"images/00AA1186-71A4-496E-BBD3-C2B091E13401.PNG", cap:"חדר תינוק / ממ\"ד"},
+  {src:"images/41c942d1-19f8-4827-8c51-bf34513d0964.JPG", cap:"פינת מנוחה בקומה העליונה"},
+  {src:"images/620dac66-66a1-43d3-ac62-009041b1bdc8.JPG", cap:"חלל עבודה נוסף"},
+  {src:"images/230ebf10-89fc-4e42-89d8-782f6aba646c.JPG", cap:"מחסן / חדר ארונות"},
+];
+
+const slidesEl=document.getElementById('slides');
+const dotsEl=document.getElementById('dots');
+const curEl=document.getElementById('cur');
+document.getElementById('total').textContent=IMAGES.length;
+
+IMAGES.forEach((im,i)=>{
+  const s=document.createElement('div');
+  s.className='slide'+(i===0?' active':'');
+  s.innerHTML=`<img src="${im.src}" alt="${im.cap}" ${i>1?'loading="lazy"':''}><div class="cap">${im.cap}</div>`;
+  slidesEl.appendChild(s);
+  const d=document.createElement('button');
+  d.className='dot'+(i===0?' active':'');
+  d.setAttribute('aria-label','תמונה '+(i+1));
+  d.addEventListener('click',()=>go(i));
+  dotsEl.appendChild(d);
+});
+
+const slides=[...slidesEl.children];
+const dots=[...dotsEl.children];
+let idx=0, timer;
+
+function go(n){
+  slides[idx].classList.remove('active');
+  dots[idx].classList.remove('active');
+  idx=(n+slides.length)%slides.length;
+  slides[idx].classList.add('active');
+  dots[idx].classList.add('active');
+  curEl.textContent=idx+1;
+  restart();
+}
+const next=()=>go(idx+1), prev=()=>go(idx-1);
+document.getElementById('next').addEventListener('click',next);
+document.getElementById('prev').addEventListener('click',prev);
+
+/* RTL arrow keys: right = previous, left = next */
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowLeft')next();
+  if(e.key==='ArrowRight')prev();
+});
+
+/* autoplay (pause on hover) */
+function restart(){clearInterval(timer);timer=setInterval(next,5500);}
+const carousel=document.getElementById('carousel');
+carousel.addEventListener('mouseenter',()=>clearInterval(timer));
+carousel.addEventListener('mouseleave',restart);
+restart();
+
+/* touch swipe */
+let x0=null;
+carousel.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
+carousel.addEventListener('touchend',e=>{
+  if(x0===null)return;
+  const dx=e.changedTouches[0].clientX-x0;
+  if(Math.abs(dx)>45){ dx>0?prev():next(); } /* RTL: swipe right→prev */
+  x0=null;
+});
+
+/* ===== scroll reveal ===== */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
+},{threshold:.16});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+/* ===== floating call button after hero ===== */
+const fc=document.getElementById('floatCall');
+const heroIO=new IntersectionObserver(([e])=>{
+  fc.classList.toggle('show',!e.isIntersecting);
+},{threshold:.1});
+heroIO.observe(document.querySelector('.hero'));
+</script>
+</body>
+</html>
