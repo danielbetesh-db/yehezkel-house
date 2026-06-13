@@ -73,7 +73,9 @@ header.hero{
 @keyframes heroZoom{to{transform:scale(1)}}
 .hero::after{
   content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(to top,rgba(17,13,8,.86) 0%,rgba(17,13,8,.34) 42%,rgba(17,13,8,.12) 100%);
+  background:
+    linear-gradient(to top,rgba(12,9,5,.95) 0%,rgba(12,9,5,.7) 30%,rgba(12,9,5,.45) 60%,rgba(12,9,5,.5) 100%),
+    radial-gradient(120% 80% at 50% 100%,rgba(12,9,5,.65),transparent 70%);
 }
 .hero-inner{padding-bottom:7vh;padding-top:14vh}
 .tag{
@@ -215,6 +217,48 @@ header.hero{
 .no-broker{display:inline-block;margin-top:1.4rem;color:#d8ab74;letter-spacing:.05em;font-weight:600;font-size:.9rem}
 
 footer{background:var(--dark);color:#8a7f6d;text-align:center;padding:2.2rem 1rem;border-top:1px solid rgba(255,255,255,.07);font-size:.9rem}
+
+/* ====== LIGHTBOX ====== */
+.slide img,.split .media img{cursor:zoom-in}
+.lb{
+  position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
+  background:rgba(10,8,5,.95);backdrop-filter:blur(10px);padding:4vh 4vw;
+}
+.lb.open{display:flex;animation:lbfade .3s ease}
+@keyframes lbfade{from{opacity:0}to{opacity:1}}
+.lb-stage{position:relative;max-width:94vw;max-height:88vh;display:flex;align-items:center;justify-content:center}
+.lb-img{
+  max-width:94vw;max-height:80vh;border-radius:12px;object-fit:contain;
+  box-shadow:0 40px 90px -20px rgba(0,0,0,.8);
+}
+.lb-img.pop{animation:lbpop .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes lbpop{from{transform:scale(.93);opacity:.3}to{transform:scale(1);opacity:1}}
+.lb-cap{
+  position:absolute;left:0;right:0;bottom:-2.6rem;text-align:center;
+  color:#f3ece0;font-size:clamp(1rem,2vw,1.25rem);font-weight:500;
+}
+.lb-btn{
+  position:fixed;z-index:101;width:54px;height:54px;border-radius:50%;border:none;cursor:pointer;
+  background:rgba(255,253,248,.92);color:var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .25s,background .25s;
+}
+.lb-btn:hover{background:#fff;transform:scale(1.08)}
+.lb-btn svg{width:24px;height:24px}
+.lb-close{top:20px;left:20px}
+.lb-prev{top:50%;right:22px;transform:translateY(-50%)}
+.lb-prev:hover{transform:translateY(-50%) scale(1.08)}
+.lb-next{top:50%;left:22px;transform:translateY(-50%)}
+.lb-next:hover{transform:translateY(-50%) scale(1.08)}
+.lb-count{
+  position:fixed;top:26px;left:50%;transform:translateX(-50%);z-index:101;
+  background:rgba(0,0,0,.55);color:#fff;padding:.4rem 1rem;border-radius:999px;
+  font-size:.9rem;font-weight:600;letter-spacing:.05em;
+}
+@media(max-width:560px){
+  .lb-btn{width:46px;height:46px}
+  .lb-prev{right:10px}.lb-next{left:10px}
+}
 
 /* scroll-reveal */
 .fade{opacity:0;transform:translateY(34px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
@@ -397,6 +441,24 @@ footer{background:var(--dark);color:#8a7f6d;text-align:center;padding:2.2rem 1re
 
 <footer>בית כפרי למכירה · רחוב יחזקאל, שכונת רמות רמז, חיפה</footer>
 
+<!-- ============ LIGHTBOX ============ -->
+<div class="lb" id="lb" aria-modal="true" role="dialog">
+  <div class="lb-count"><span id="lbCur">1</span> / <span id="lbTotal"></span></div>
+  <button class="lb-btn lb-close" id="lbClose" aria-label="סגירה">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="הקודם">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="הבא">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="lb-stage">
+    <img class="lb-img" id="lbImg" src="" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+</div>
+
 <script>
 /* ===== image set (text/captions only — own photos) ===== */
 const IMAGES = [
@@ -451,8 +513,9 @@ const next=()=>go(idx+1), prev=()=>go(idx-1);
 document.getElementById('next').addEventListener('click',next);
 document.getElementById('prev').addEventListener('click',prev);
 
-/* RTL arrow keys: right = previous, left = next */
+/* RTL arrow keys: right = previous, left = next (carousel only when lightbox closed) */
 document.addEventListener('keydown',e=>{
+  if(lb.classList.contains('open'))return;
   if(e.key==='ArrowLeft')next();
   if(e.key==='ArrowRight')prev();
 });
@@ -479,6 +542,61 @@ const io=new IntersectionObserver((entries)=>{
   entries.forEach(en=>{ if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);} });
 },{threshold:.16});
 document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+/* ===== lightbox (click any image to open big) ===== */
+const lb=document.getElementById('lb');
+const lbImg=document.getElementById('lbImg');
+const lbCap=document.getElementById('lbCap');
+const lbCur=document.getElementById('lbCur');
+document.getElementById('lbTotal').textContent=IMAGES.length;
+let lbIdx=0;
+
+function lbShow(n){
+  lbIdx=(n+IMAGES.length)%IMAGES.length;
+  lbImg.src=IMAGES[lbIdx].src;
+  lbImg.alt=IMAGES[lbIdx].cap;
+  lbCap.textContent=IMAGES[lbIdx].cap;
+  lbCur.textContent=lbIdx+1;
+  lbImg.classList.remove('pop');void lbImg.offsetWidth;lbImg.classList.add('pop');
+}
+function lbOpen(src){
+  let i=IMAGES.findIndex(im=>src.indexOf(im.src)!==-1);
+  if(i<0)i=0;
+  lbShow(i);
+  lb.classList.add('open');
+  document.body.style.overflow='hidden';
+  clearInterval(timer); /* pause carousel autoplay */
+}
+function lbClose(){
+  lb.classList.remove('open');
+  document.body.style.overflow='';
+  restart();
+}
+const lbNext=()=>lbShow(lbIdx-1); /* RTL: next photo to the left */
+const lbPrev=()=>lbShow(lbIdx+1);
+document.getElementById('lbClose').addEventListener('click',lbClose);
+document.getElementById('lbNext').addEventListener('click',lbNext);
+document.getElementById('lbPrev').addEventListener('click',lbPrev);
+lb.addEventListener('click',e=>{ if(e.target===lb||e.target.classList.contains('lb-stage'))lbClose(); });
+document.addEventListener('keydown',e=>{
+  if(!lb.classList.contains('open'))return;
+  if(e.key==='Escape')lbClose();
+  if(e.key==='ArrowLeft')lbNext();
+  if(e.key==='ArrowRight')lbPrev();
+});
+/* lightbox swipe */
+let lx0=null;
+lb.addEventListener('touchstart',e=>lx0=e.touches[0].clientX,{passive:true});
+lb.addEventListener('touchend',e=>{
+  if(lx0===null)return;
+  const dx=e.changedTouches[0].clientX-lx0;
+  if(Math.abs(dx)>45){ dx>0?lbPrev():lbNext(); }
+  lx0=null;
+});
+/* make every property image clickable */
+document.querySelectorAll('.slide img, .split .media img').forEach(img=>{
+  img.addEventListener('click',()=>lbOpen(img.getAttribute('src')));
+});
 
 /* ===== floating call button after hero ===== */
 const fc=document.getElementById('floatCall');
